@@ -53,7 +53,7 @@ a { color: inherit; text-decoration: none; }
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(247, 244, 236, 0.92);
+  background: rgba(247, 244, 236, 0.95);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid transparent;
   transition: border-color .3s ease, background .3s ease;
@@ -188,7 +188,7 @@ a { color: inherit; text-decoration: none; }
   background-size: cover;
   background-position: center;
   opacity: 0;
-  transform: scale(1.05) translateX(-20px);
+  transform: scale(1.04) translateX(-15px);
   transition: opacity 1.2s ease-in-out, transform 6s linear;
 }
 
@@ -197,6 +197,7 @@ a { color: inherit; text-decoration: none; }
   transform: scale(1) translateX(0);
 }
 
+/* Dark Transparent Film Overlay for Rich Contrast */
 .hero-overlay {
   position: absolute;
   top: 0;
@@ -206,7 +207,7 @@ a { color: inherit; text-decoration: none; }
   background: linear-gradient(
     135deg,
     rgba(14, 26, 43, 0.92) 0%,
-    rgba(22, 40, 63, 0.82) 50%,
+    rgba(22, 40, 63, 0.84) 50%,
     rgba(14, 26, 43, 0.90) 100%
   );
   z-index: 2;
@@ -723,7 +724,7 @@ a { color: inherit; text-decoration: none; }
 .footer-bottom { padding-top: 20px; }
 .footer-bottom p { color: #6C7686; font-size: 0.82rem; margin: 0; }
 
-/* ============ RESPONSIVE ============ */
+/* ============ RESPONSIVE (TABLETS & DESKTOP COLLAPSE) ============ */
 @media (max-width: 880px) {
   .main-nav { display: none; }
   .main-nav.open {
@@ -749,8 +750,7 @@ a { color: inherit; text-decoration: none; }
   .call-pill { padding: 9px; border-radius: 50%; }
 
   .hero-grid { grid-template-columns: 1fr; }
-  .hero { padding: 48px 0 56px; }
-
+  
   .service-flagship {
     grid-template-columns: 1fr;
     padding: 30px 24px;
@@ -777,12 +777,119 @@ a { color: inherit; text-decoration: none; }
   .footer-contact { align-items: flex-start; }
 }
 
+/* ============ MOBILE-FIRST HERO & SCREEN TUNING (< 768px) ============ */
+@media (max-width: 768px) {
+  /* 1. Header se proper spacing taaki text niche na dabe */
+  .hero-slider-section {
+    padding: 36px 0 44px;
+    min-height: auto;
+  }
+
+  /* 2. Denser dark overlay on mobile: background subtle dikhega aur white text 100% crisp hoga */
+  .hero-overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(14, 26, 43, 0.94) 0%,
+      rgba(22, 40, 63, 0.90) 60%,
+      rgba(14, 26, 43, 0.96) 100%
+    );
+  }
+
+  /* 3. Center focus for mobile screens */
+  .hero-slide {
+    background-position: center center;
+    background-size: cover;
+    transform: scale(1.02);
+  }
+
+  .hero-slide.active {
+    transform: scale(1);
+  }
+
+  .hero-grid {
+    gap: 28px;
+  }
+
+  .eyebrow {
+    font-size: 0.88rem;
+    margin-bottom: 8px;
+  }
+
+  .hero-copy h1 {
+    font-size: 1.85rem;
+    line-height: 1.25;
+    margin-bottom: 12px;
+  }
+
+  .hero-copy .hero-lede {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    margin-bottom: 20px;
+  }
+
+  /* Touch-friendly full-width buttons */
+  .hero-ctas {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .hero-ctas .btn {
+    width: 100%;
+    padding: 12px 18px;
+    font-size: 0.92rem;
+  }
+
+  /* 4. Compact stat cards on mobile */
+  .hero-figures {
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .figure-glass,
+  .figure-glass-primary {
+    padding: 14px 16px;
+  }
+
+  .figure-glass .figure-number,
+  .figure-glass-primary .figure-number {
+    font-size: 1.8rem;
+  }
+
+  .figure-glass .figure-label,
+  .figure-glass-primary .figure-label {
+    font-size: 0.78rem;
+    margin-top: 4px;
+  }
+
+  .figure-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .bank-item {
+    min-width: 160px;
+    padding: 12px 14px;
+  }
+
+  .floating-actions {
+    bottom: 16px;
+    right: 16px;
+  }
+
+  .float-btn {
+    width: 46px;
+    height: 46px;
+  }
+}
+
 @media (max-width: 520px) {
-  .process-list { grid-template-columns: 1fr; gap: 28px; }
-  .figure-row { grid-template-columns: 1fr; }
-  .bank-item { min-width: 160px; padding: 12px 14px; }
-  .floating-actions { bottom: 16px; right: 16px; }
-  .float-btn { width: 46px; height: 46px; }
+  .process-list {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
